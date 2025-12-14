@@ -31,9 +31,13 @@ if st.button("Generate Plan"):
     for i, task in enumerate(tasks, 1):
         st.write(f"{i}. {task}")
 if st.button("📄 Generate README"):
-    st.success("📘 Auto-Generated README")
-    st.code(
-        generate_readme("HackMate AI", st.session_state.idea),
-        language="markdown"
-    )
+    if st.session_state.idea:
+        st.success("📘 Auto-Generated README")
+        st.code(
+            generate_readme("HackMate AI", st.session_state.idea),
+            language="markdown"
+        )
+    else:
+        st.warning("Please generate an idea first")
+
 
