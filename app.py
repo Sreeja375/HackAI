@@ -1,13 +1,30 @@
+import streamlit as st
 from modules.idea_generator import generate_idea
 from modules.task_planner import generate_tasks
 
-if __name__ == "__main__":
-    domain = "healthcare"
-    project_type = "ai"
+st.set_page_config(page_title="HackMate AI", layout="centered")
 
-    print("💡 Hackathon Idea:")
-    print(generate_idea(domain))
+st.title("🚀 HackMate AI")
+st.subheader("Your Hackathon Companion")
 
-    print("\n🗂 Task Plan:")
-    for i, task in enumerate(generate_tasks(project_type), 1):
-        print(f"{i}. {task}")
+st.markdown("Generate ideas and plan tasks in seconds.")
+
+# User inputs
+domain = st.selectbox(
+    "Select hackathon domain",
+    ["Healthcare", "Education", "Climate", "Productivity"]
+)
+
+project_type = st.selectbox(
+    "Select project type",
+    ["AI", "Web"]
+)
+
+if st.button("Generate Plan"):
+    st.success("💡 Hackathon Idea")
+    st.write(generate_idea(domain))
+
+    st.success("🗂 Task Plan")
+    tasks = generate_tasks(project_type)
+    for i, task in enumerate(tasks, 1):
+        st.write(f"{i}. {task}")
