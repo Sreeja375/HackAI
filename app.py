@@ -2,7 +2,7 @@ import streamlit as st
 from modules.idea_generator import generate_idea
 from modules.task_planner import generate_tasks
 from modules.liked_ideas import like_project, unlike_project, get_liked_projects
-from modules.idea_evaluation import evaluate_idea
+from modules.idea_evluate import evaluate_idea
 
 st.set_page_config(page_title="HackMate AI", layout="wide")
 
