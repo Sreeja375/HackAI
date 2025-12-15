@@ -2,7 +2,7 @@ import streamlit as st
 
 from modules.idea_generator import generate_idea
 from modules.task_planner import generate_tasks
-from modules.liked_projects import like_project, unlike_project, get_liked_projects
+from modules.like_ideas import like_projects, unlike_project, get_liked_projects
 from modules.idea_evaluation import evaluate_idea
 
 # -------------------------------------------------
