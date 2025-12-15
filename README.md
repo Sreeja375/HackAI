@@ -1,7 +1,7 @@
-# HackAI
-# HackAI 🚀
+# HackmateAI
 
-HackAI is a hackathon companion application that helps teams
+
+HackmateAI is a hackathon companion application that helps teams
 generate ideas, plan tasks, and build projects efficiently.
 
 ## Features
