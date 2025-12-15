@@ -2,7 +2,8 @@ import streamlit as st
 
 from modules.idea_generator import generate_idea
 from modules.task_planner import generate_tasks
-from modules.liked_ideas import like_project, unlike_project, get_liked_projects
+from modules.liked_projects import like_project, unlike_project, get_liked_projects
+from modules.idea_evaluation import evaluate_idea
 
 # -------------------------------------------------
 # Page Configuration
@@ -11,7 +12,7 @@ st.set_page_config(page_title="HackMate AI", layout="centered")
 
 st.title("🚀 HackMate AI")
 st.subheader("Hackathon Idea & Project Manager")
-st.markdown("Generate ideas, plan execution, and manage your liked projects.")
+st.markdown("Generate ideas, evaluate them, and manage your shortlisted projects.")
 
 # -------------------------------------------------
 # Initialize Session State
@@ -70,6 +71,21 @@ if st.session_state.idea:
     tasks = generate_tasks(project_type)
     for i, task in enumerate(tasks, 1):
         st.write(f"{i}. {task}")
+
+    # -------------------------------------------------
+    # ⭐ Idea Evaluation Score
+    # -------------------------------------------------
+    st.subheader("📊 Idea Evaluation Score")
+
+    innovation = st.slider("Innovation", 1, 5, 3)
+    feasibility = st.slider("Feasibility", 1, 5, 3)
+    impact = st.slider("Impact", 1, 5, 3)
+
+    if st.button("Evaluate Idea"):
+        result = evaluate_idea(innovation, feasibility, impact)
+
+        st.metric("Total Score", f"{result['total']} / 15")
+        st.success(result["label"])
 
 # -------------------------------------------------
 # Show Liked Projects
